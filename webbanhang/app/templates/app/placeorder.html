@@ -1,0 +1,9 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block content_checkout %}
+<br><br><br><br><br><br>
+<h1>Đặt hàng thành công!</h1>
+<p>Cảm ơn bạn đã đặt hàng. Vui lòng kiểm tra email của bạn để xác nhận thông tin.</p>
+<a href="{% url 'home' %}">Quay lại trang chủ</a>
+	<br/><br/><br/>
+{% endblock content_checkout %}

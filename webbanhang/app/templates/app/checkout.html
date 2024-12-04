@@ -1,0 +1,75 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block content_checkout %}
+     <div class="row" style= 'width:100%; margin-top: 60px;'>
+		<div class="col-lg-6">
+			<div class="box-element" id="form-wrapper">
+				<form id="form" method="POST" action="{% url 'placeorder' %}">
+					{% csrf_token %}
+					<div id="user-info">
+						<p style="margin-left:10px; margin-top:10px"><strong>Thông tin liên hệ:</strong></p>
+						<hr>
+						<div class="form-field">
+							<input required class="form-control" type="text" name="name" placeholder="Họ và tên">
+						</div>
+						<div class="form-field">
+							<input required class="form-control" type="text" name="phone" placeholder="Số điện thoại" maxlength="10" oninput="this.value = this.value.slice(0, 10)"></div>
+						<div class="form-field">
+							<input required class="form-control" type="email" name="email" placeholder="Email">
+						</div>
+					</div>
+					
+					<div id="shipping-info">
+						<hr>
+						<p style="margin-left:10px;"><strong>Địa chỉ nhận hàng:</strong></p>
+						<hr>
+						<div class="form-field">
+							<input required class="form-control" type="text" name="address" placeholder="Địa chỉ chi tiết">
+						</div>
+						<div class="form-field">
+							<input required class="form-control" type="text" name="city" placeholder="Tỉnh/Thành phố">
+						</div>
+						<div class="form-field">
+							<input required class="form-control" type="text" name="district" placeholder="Quận/Huyện">
+						</div>
+						<div class="form-field">
+							<input required class="form-control" type="text" name="ward" placeholder="Phường/Xã">
+						</div>
+					</div>
+
+					<hr>
+					<input id="form-button" class="btn btn-success btn-block" 
+					style="background-color: #F8CD26; color: black; border: none; border-radius: 5px; margin:5px; padding: 10px 20px;" 
+					type="submit" value="Đặt hàng" 
+					onmouseover="this.style.backgroundColor='#FFEE99';" 
+					onmouseout="this.style.backgroundColor='#F8CD26';">
+				</form>
+			</div>
+
+			<br>
+			<div class="box-element hidden" id="payment-info">
+				<small>Paypal Options</small>
+			</div>
+			
+		</div>
+
+		<div class="col-lg-6">
+			<div class="box-element">
+				<a style="margin-left:10px; margin-top:10px; border-radius:50px" class="btn btn-outline-dark" href="{% url 'cart' %}">&#x2190; Quay lại giỏ hàng</a>
+				<hr>
+				<h3 style="margin-left:10px; text-align:center;">Tóm tắt đơn hàng</h3>
+				<hr>
+				{% for item in items  %}
+			<div class="cart-row">
+				<div style="flex:2"><img class="row-image" src="{{item.product.ImageURL}}"></div>
+				<div style="flex:2"><p>{{item.product.name}}</p></div>
+				<div style="flex:1"><p class="quantity">x {{item.quantity}}</p></div>
+				<div style="flex:1"><p> {{item.product.price | floatformat:0}} ₫</p></div>
+			</div>
+			{% endfor %}
+				<h5 style="margin:0 25px 20px" class="d-flex justify-content-between total font-weight-bold mt-4"><strong>Tổng thanh toán: ({{order.get_cart_items}} sản phẩm)</strong><strong>{{order.get_cart_total | floatformat:0}} ₫</strong></h5>
+			</div>
+		</div>
+	</div>
+	<br/><br/><br/>
+{% endblock content_checkout %}
