@@ -1,88 +1,132 @@
-{% extends 'app/index.html' %}
+{% extends 'app/base.html' %}
 {% load static %}
+{% load humanize %}
+
 {% block banner_slider %}
-<div id="carouselExampleDark" class="carousel carousel-dark slide" style="margin-top: 66px;">
-    <div class="carousel-indicators">
-      <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-      <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
-      <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
-      <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="3" aria-label="Slide 4"></button>
-      <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="4" aria-label="Slide 5"></button>
-      <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="5" aria-label="Slide 6"></button>
-
-    </div>
-    <div class="carousel-inner">
-      <div class="carousel-item active" data-bs-interval="10000">
-        <img src="{% static "app/images/banner/banner1.webp" %}" class="d-block w-100" alt="..." height="600">
+<div id="snowflakes"></div>
+<div style="background-image: url('https://cdn2.cellphones.com.vn/x/media/wysiwyg/BGNoel-1920x1080.jpg'); background-repeat: no-repeat; background-size: cover; background-attachment: fixed;">
+  <div id="carouselExampleDark" class="carousel carousel-dark slide" style="margin-top: 66px;">
+    <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel" style="margin-top: 66px;">
+      <div class="carousel-indicators">
+          <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
+          <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="3" aria-label="Slide 4"></button>
+          <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="4" aria-label="Slide 5"></button>
+          <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="5" aria-label="Slide 6"></button>
+          <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="6" aria-label="Slide 7"></button>
       </div>
-      <div class="carousel-item" data-bs-interval="2000">
-        <img src="{% static "app/images/banner/banner2.png" %}" class="d-block w-100" alt="..." height="600">
-      </div>
-      <div class="carousel-item">
-        <img src="{% static "app/images/banner/banner3.webp" %}" class="d-block w-100" alt="..."height="600">
-      </div>
-      <div class="carousel-item">
-        <img src="{% static "app/images/banner/banner4.jpg" %}" class="d-block w-100" alt="..."height="600">
-      </div>
-      <div class="carousel-item">
-        <img src="{% static "app/images/banner/banner5.webp" %}" class="d-block w-100" alt="..."height="600">
-      </div>
-      <div class="carousel-item">
-        <img src="{% static "app/images/banner/banner6.jpg" %}" class="d-block w-100" alt="..."height="600">
-      </div>
-    </div>
-
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
-  </div>
-{% endblock banner_slider %}
-{% block main-content %}
-<div class="d-flex justify-content container mt-5 flex-wrap">
-  {% for product in products %}
-  <div class="card p-3 bg-white m-2" style="width: 300px;">
-      {% comment %} <i class="fab fa-apple fa-lg"></i> {% endcomment %}
-      <div class="about-product text-center mt-2">
-          <img src="{{product.ImageURL}}" width="200">
-          <div>
-              <h4>{{product.name}}</h4>
-              <style>
-                .btn-outline-success {
-                    border-radius: 50px;
-                    font-size: 13px;
-                    display: inline-block;
-                    text-decoration: none;
-                    color: white;
-                    background-color: transparent;
-                    border: none;
-                    transition: background-color 0.5s, color 0.5s;
-                }
-                .btn-outline-success:hover {
-                    background-color: black;
-                    color: white;
-                }
-                .btn-outline-success:active {
-                    background-color: transparent;
-                    color: white;
-                }
-            </style>
-              <a style="border-radius: 50px; font-size:13px; margin-bottom:-20px;" class="btn btn-outline-success" href="{% url 'chitiet' %}?id={{product.id}}">Khám phá thiết bị</a>
+      <div class="carousel-inner">
+          <div class="carousel-item active" data-bs-interval="5000">
+              <img src="{% static "app/images/banner/banner2.jpeg" %}" class="d-block w-100" alt="..." height="600">
+          </div>
+          <div class="carousel-item" data-bs-interval="5000">
+              <img src="{% static "app/images/banner/banner1.jpeg" %}" class="d-block w-100" alt="..." height="600">
+          </div>
+          <div class="carousel-item" data-bs-interval="5000">
+              <img src="{% static "app/images/banner/banner3.jpeg" %}" class="d-block w-100" alt="..." height="600">
+          </div>
+          <div class="carousel-item" data-bs-interval="5000">
+              <img src="{% static "app/images/banner/banner4.jpeg" %}" class="d-block w-100" alt="..." height="600">
+          </div>
+          <div class="carousel-item" data-bs-interval="5000">
+              <img src="{% static "app/images/banner/banner5.jpeg" %}" class="d-block w-100" alt="..." height="600">
+          </div>
+          <div class="carousel-item" data-bs-interval="5000">
+              <img src="{% static "app/images/banner/banner6.jpeg" %}" class="d-block w-100" alt="..." height="600">
+          </div>
+          <div class="carousel-item" data-bs-interval="5000">
+              <img src="{% static "app/images/banner/banner7.jpeg" %}" class="d-block w-100" alt="..." height="600">
           </div>
       </div>
-      <div style="margin:0 20px;" class="d-flex justify-content-between total font-weight-bold mt-4"><span>Giá sản phẩm:</span><span>{{product.price | floatformat:0}} ₫</span></div>
-      <hr>
-      <div style="display:flex; justify-content:center; gap:10px; margin-bottom: 10px;">
-        <button style="border-radius:5px; padding:5px 10px; font-size:16px;" data-product={{product.id}} data-action = "add" class="btn btn-outline-secondary add-btn update-cart">Thêm vào giỏ hàng</button>
-      </div>
+  
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+      </button>
   </div>
-  {% endfor %}
+  {% endblock banner_slider %}
+  {% block main-content %}
+  <div class="d-flex justify-content container mt-5 flex-wrap">
+    {% for product in products %}
+    <div class="card p-3 bg-white m-2" style="width: 300px;">
+        {% comment %} <i class="fab fa-apple fa-lg"></i> {% endcomment %}
+        <div class="about-product text-center mt-2">
+            <img src="{{product.ImageURL}}" width="200">
+            <div>
+                <h4>{{product.name}}</h4>
+                <a class="btn btn-outline-success" style="border-radius: 50px; font-size:13px; margin-bottom:-20px;" href="{% url 'chitiet' %}?id={{product.id}}">Khám phá thiết bị</a>
+            </div>
+        </div>
+        <div class="d-flex justify-content-between total font-weight-bold mt-4" style="margin:0 20px;"><span>Giá sản phẩm:</span><span>{{product.price|floatformat:0|intcomma}} ₫</span></div>
+        <hr>
+        <div style="display:flex; justify-content:center; gap:10px; margin-bottom: 10px;">
+          <button class="btn btn-outline-secondary add-btn update-cart" style="border-radius:5px; padding:5px 10px; font-size:16px;" data-product={{product.id}} data-action = "add">Thêm vào giỏ hàng</button>
+        </div>
+    </div>
+    {% endfor %}
+  </div>
+  <br><br>
+<audio id="myAudio" loop autoplay>
+  <source src="{% static 'app/music/calm-christmas-piano-262888.mp3' %}" type="audio/mpeg">
+</audio>
 </div>
-<br><br><hr>
+<style>
+  .btn-outline-success {
+      border-radius: 50px;
+      font-size: 13px;
+      display: inline-block;
+      text-decoration: none;
+      color: white;
+      background-color: transparent;
+      border: none;
+      transition: background-color 0.5s, color 0.5s;
+  }
+  .btn-outline-success:hover {
+      background-color: black;
+      color: white;
+  }
+  .btn-outline-success:active {
+      background-color: transparent;
+      color: white;
+  }
+  #snowflakes {
+    position: fixed; /* Đặt vị trí cố định để tuyết không bị ảnh hưởng bởi cuộn */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 10; /* Đảm bảo tuyết rơi nằm trên các phần tử khác */
+  }
+  .snowflake {
+    position: absolute;
+    color: white;
+    font-size: 1em; /* Kích thước bông tuyết */
+    opacity: 0.5;
+    pointer-events: none;
+    animation: fall linear infinite;
+  }
+  @keyframes fall {
+    0% {
+      transform: translateY(0);
+    }
+    100% {
+      transform: translateY(100vh);
+    }
+  }
+  {% comment %} Thu nhỏ ảnh khi kích thước màn hình thay đổi {% endcomment %}
+  .carousel-item img {
+    width: 100%;
+    height: auto;
+  }
+</style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
 <script>
   document.addEventListener('DOMContentLoaded', function () {
     const addButtons = document.querySelectorAll('.add-btn');
@@ -90,12 +134,42 @@
       button.addEventListener('click', function(event) {
         const isAuthenticated = '{{ user.is_authenticated }}'; // Kiểm tra trạng thái đăng nhập
         if (isAuthenticated === 'False') {
-          alert('Bạn cần đăng nhập để thêm sản phẩm vào giỏ hàng.');
           event.preventDefault(); // Ngăn chặn hành động thêm vào giỏ hàng
-        } else {
+          swal({
+            title: "Error",
+            text: "Bạn cần đăng nhập để thêm sản phẩm vào giỏ hàng !",
+            icon: "warning",
+            buttons:"OK"
+          });
         }
       });
     });
   });
+  document.addEventListener('DOMContentLoaded', function () {
+    const snowflakeCount = 10; // Số lượng bông tuyết ít hơn
+    const snowflakesContainer = document.getElementById('snowflakes');
+    function createSnowflake() {
+      const snowflake = document.createElement('div');
+      snowflake.className = 'snowflake';
+      snowflake.innerHTML = '❆'; // Ký tự tuyết
+      // Đặt vị trí ngẫu nhiên và thời gian animate
+      snowflake.style.left = Math.random() * 100 + 'vw';
+      snowflake.style.animationDuration = Math.random() * 6 + 6 + 's'; // Thời gian từ 4s đến 10s (rơi chậm)
+      snowflake.style.fontSize = Math.random() * 0.8 + 0.5 + 'em'; // Kích thước từ 0.5em đến 1.5em
+      snowflakesContainer.appendChild(snowflake);
+      // Xóa bông tuyết sau khi nó rơi
+      snowflake.addEventListener('animationend', () => {
+        snowflake.remove();
+      });
+    }
+    // Tạo bông tuyết
+    for (let i = 0; i < snowflakeCount; i++) {
+      createSnowflake();
+    }
+    // Tạo bông tuyết theo khoảng thời gian
+    setInterval(createSnowflake, 4000); // Tạo một bông tuyết mới mỗi 1000ms (1 giây)
+  });
+  // Giảm âm thanh
+  document.getElementById('myAudio').volume = 0.1;
 </script>
 {% endblock main-content %}

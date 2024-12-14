@@ -1,9 +1,14 @@
-{% extends 'app/index.html' %}
+{% extends 'app/base.html' %}
 {% load static %}
+
 {% block content_checkout %}
-<br><br><br><br><br><br>
-<h1>Đặt hàng thành công!</h1>
-<p>Cảm ơn bạn đã đặt hàng. Vui lòng kiểm tra email của bạn để xác nhận thông tin.</p>
-<a href="{% url 'home' %}">Quay lại trang chủ</a>
-	<br/><br/><br/>
+<div style="background-image: url('https://cdn2.cellphones.com.vn/x/media/wysiwyg/BGNoel-1920x1080.jpg'); background-repeat: no-repeat; background-size: cover; background-attachment: fixed;">
+    <div style="margin: 65px 0 310px 30px;">
+        <br>
+        <h1>Đặt hàng thành công!</h1>
+        <p>Cảm ơn bạn đã đặt hàng. Vui lòng kiểm tra email của bạn để xác nhận thông tin.</p>
+        <a href="{% url 'home' %}">Quay lại trang chủ</a>
+    </div>
+    <br><br><br><br><br>
+</div>
 {% endblock content_checkout %}

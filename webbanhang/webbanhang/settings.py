@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'app'
+    'django.contrib.humanize',
+    'app',
 ]
 
 MIDDLEWARE = [
@@ -66,6 +67,7 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
             ],
         },
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
     },
 ]
 
@@ -130,3 +132,12 @@ STATICFILES_DIRS = [
 MEDIA_URL = '/sanpham/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'app/static/app/images/sanpham')
+
+
+# Cài đặt email
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'  # Thay bằng máy chủ SMTP bạn sử dụng
+EMAIL_HOST_USER = 'thanhan2004thd@gmail.com'  # Thay bằng địa chỉ email của bạn
+EMAIL_HOST_PASSWORD = 'nfyjpggtvkywckqk'  # Thay bằng mật khẩu email của bạn
+EMAIL_PORT = 587  # Hoặc 465, tùy thuộc vào máy chủ SMTP
+EMAIL_USE_TLS = True  # Hoặc False, tùy thuộc vào máy chủ SMTP

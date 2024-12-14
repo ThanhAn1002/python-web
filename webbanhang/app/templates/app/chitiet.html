@@ -1,109 +1,66 @@
-{% extends 'app/index.html' %}
+{% extends 'app/base.html' %}
 {% load static %}
-        {% block search %}
-        {% for product in products %}
-        <div class="container mt-5 mb-5">
-            <div style=" margin-top:100px;" class="row d-flex justify-content-center">
-                <div class="col-md-10">
-                    <div class="card">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="images p-3">
-                                    <div class="text-center p-4"> <img id="main-image" src="{{product.ImageURL}}" width="350" /> </div>
-                                    <div class="radio-group">
-                                        <label>
-                                            <input type="radio" name="option" value="1">
-                                            <div class="radio-button">256GB</div>
-                                        </label>
-                                        <label>
-                                            <input type="radio" name="option" value="2">
-                                            <div class="radio-button">512GB</div>
-                                        </label>
-                                        <label>
-                                            <input type="radio" name="option" value="3">
-                                            <div class="radio-button">1TB</div>
-                                        </label>
-                                    </div>
-                                    <br><br>
-                                    <div class="color-group">
-                                        <label>
-                                            <input type="radio" name="color" value="red">
-                                            <div class="color-button" style="background-color: #C4AB97;"></div>
-                                        </label>
-                                        <label>
-                                            <input type="radio" name="color" value="green">
-                                            <div class="color-button" style="background-color: #3F4042;"></div>
-                                        </label>
-                                        <label>
-                                            <input type="radio" name="color" value="blue">
-                                            <div class="color-button" style="background-color: #F2F1EB;"></div>
-                                        </label>
-                                        <label>
-                                            <input type="radio" name="color" value="blue">
-                                            <div class="color-button" style="background-color: #BAB4A9;"></div>
-                                        </label>
-                                    </div>
-                                    <style>
-                                        .radio-group {
-                                            margin: 0 auto;
-                                            display: flex;
-                                            justify-content: center; /* Căn giữa nội dung theo chiều ngang */
-                                            align-items: center; /* Căn giữa nội dung theo chiều dọc */
-                                            gap: 30px; /* Khoảng cách giữa các radio button */
-                                        }
-                                        .radio-button {
-                                            position: relative;
-                                            display: inline-block;
-                                            width: 60px; /* Đường kính của vòng tròn */
-                                            height: 30px; /* Đường kính của vòng tròn */
-                                            border: 1px solid #000; /* Viền của vòng tròn */
-                                            text-align: center;
-                                            line-height: 25px; /* Căn giữa chữ theo chiều dọc */
-                                            cursor: pointer;
-                                        }
-                                        input[type="radio"] {
-                                            display: none; /* Ẩn radio button gốc */
-                                        }
-                                        input[type="radio"]:checked + .radio-button {
-                                            background-color: #000; /* Màu nền khi được chọn */
-                                            color: white; /* Màu chữ khi được chọn */
-                                        }
-                                        .color-group {
-                                            margin: 0 auto;
-                                            display: flex;
-                                            justify-content: center; /* Căn giữa nội dung theo chiều ngang */
-                                            align-items: center; /* Căn giữa nội dung theo chiều dọc */
-                                            gap: 60px; /* Khoảng cách giữa các button màu */
-                                        }
-                                        .color-button {
-                                            position: relative;
-                                            display: inline-block;
-                                            width: 30px; /* Đường kính của hình tròn màu */
-                                            height: 30px; /* Đường kính của hình tròn màu */
-                                            border: 1px solid white; /* Viền trắng */
-                                            border-radius: 50%; /* Bo tròn 50% */
-                                            cursor: pointer;
-                                        }
-                                        input[type="radio"]:checked + .color-button {
-                                            border: 3px solid black; /* Viền dày hơn khi được chọn */
-                                        }
-                                    </style>
+{% load humanize %}
+
+{% block search %}
+<div style="background-image: url('https://cdn2.cellphones.com.vn/x/media/wysiwyg/BGNoel-1920x1080.jpg'); background-repeat: no-repeat; background-size: cover; background-attachment: fixed;">
+    {% for product in products %}
+    <div class="container mt-5 mb-5">
+        <div class="row d-flex justify-content-center">
+            <div class="col-md-10" style=" margin-top:60px;">
+                <div class="card">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="images p-3">
+                                <div class="text-center p-4"> <img id="main-image" src="{{product.ImageURL}}" width="350" /> </div>
+                                <div class="radio-group">
+                                    <label>
+                                        <input type="radio" name="option" value="1">
+                                        <div class="radio-button">256GB</div>
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="option" value="2">
+                                        <div class="radio-button">512GB</div>
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="option" value="3">
+                                        <div class="radio-button">1TB</div>
+                                    </label>
+                                </div>
+                                <br><br>
+                                <div class="color-group">
+                                    <label>
+                                        <input type="radio" name="color" value="red">
+                                        <div class="color-button" style="background-color: #C4AB97;"></div>
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="color" value="green">
+                                        <div class="color-button" style="background-color: #3F4042;"></div>
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="color" value="blue">
+                                        <div class="color-button" style="background-color: #F2F1EB;"></div>
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="color" value="blue">
+                                        <div class="color-button" style="background-color: #BAB4A9;"></div>
+                                    </label>
                                 </div>
                             </div>
-                            <div class="col-md-6">
-                                <div class="product p-4">
-                                    <a style="margin-top:10px; border-radius:50px"  class="btn btn-outline-dark" href="{% url 'home' %}">&#x2190; Quay lại</a>
-                                    <div class="mt-4 mb-3"> <span class="text-uppercase text-muted brand">{{product.hangsx}}</span>
-                                        <h5 class="text-uppercase">{{product.name}}</h5>
-                                        <div class="price d-flex flex-row align-items-center"> <span class="act-price">{{product.price | floatformat:0}} ₫</span>
-                                        </div>
-                                    </div>
-                                    <p class="about">{{product.chitiet}}</p>
-                                    <div class="sizes mt-5">
-                                    </div>
-                                    <div style="display:flex; justify-content:center; gap:10px; margin-bottom: 10px;">
-                                        <button style="border-radius:5px; padding:5px 10px; font-size:20px;" data-product={{product.id}} data-action = "add" class="btn btn-outline-secondary add-btn update-cart">Thêm vào giỏ hàng</button>
-                                      </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="product p-4">
+                                <a class="btn btn-outline-dark" style="margin-top:10px; border-radius:50px" href="{% url 'home' %}">&#x2190; Quay lại</a>
+                                <div class="mt-4 mb-3"> <span class="text-uppercase text-muted brand">{{product.hangsx}}</span>
+                                    <h5 class="text-uppercase">{{product.name}}</h5>
+                                    <div class="price d-flex flex-row align-items-center"> <span class="act-price">{{product.price | floatformat:0|intcomma}} ₫</span>
+                                </div>
+                                </div>
+                                <p class="about">{{product.chitiet}}</p>
+                                <div class="sizes mt-5">
+                                </div>
+                                <div style="display:flex; justify-content:center; gap:10px; margin-bottom: 10px;">
+                                    <button class="btn btn-outline-secondary add-btn update-cart" style="border-radius:5px; padding:5px 10px; font-size:20px;" data-product={{product.id}} data-action = "add">Thêm vào giỏ hàng</button>
                                 </div>
                             </div>
                         </div>
@@ -111,21 +68,68 @@
                 </div>
             </div>
         </div>
-        {% endfor %}
-          <br/><br/><br/>
-          <script>
-            document.addEventListener('DOMContentLoaded', function () {
-              const addButtons = document.querySelectorAll('.add-btn');
-              addButtons.forEach(button => {
-                button.addEventListener('click', function(event) {
-                  const isAuthenticated = '{{ user.is_authenticated }}'; // Kiểm tra trạng thái đăng nhập
-                  if (isAuthenticated === 'False') {
-                    alert('Bạn cần đăng nhập để thêm sản phẩm vào giỏ hàng.');
-                    event.preventDefault(); // Ngăn chặn hành động thêm vào giỏ hàng
-                  } else {
-                  }
-                });
-              });
-            });
-          </script>
-        {% endblock search %}
+    </div>
+    {% endfor %}
+    <br>
+</div>
+<style>
+            .radio-group {
+                margin: 0 auto;
+                display: flex;
+                justify-content: center; /* Căn giữa nội dung theo chiều ngang */
+                align-items: center; /* Căn giữa nội dung theo chiều dọc */
+                gap: 30px; /* Khoảng cách giữa các radio button */
+            }
+            .radio-button {
+                position: relative;
+                display: inline-block;
+                width: 60px; /* Đường kính của vòng tròn */
+                height: 30px; /* Đường kính của vòng tròn */
+                border: 1px solid #000; /* Viền của vòng tròn */
+                text-align: center;
+                line-height: 25px; /* Căn giữa chữ theo chiều dọc */
+                cursor: pointer;
+            }
+            input[type="radio"] {
+                display: none; /* Ẩn radio button gốc */
+            }
+            input[type="radio"]:checked + .radio-button {
+                background-color: #000; /* Màu nền khi được chọn */
+                color: white; /* Màu chữ khi được chọn */
+            }
+            .color-group {
+                margin: 0 auto;
+                display: flex;
+                justify-content: center; /* Căn giữa nội dung theo chiều ngang */
+                align-items: center; /* Căn giữa nội dung theo chiều dọc */
+                gap: 60px; /* Khoảng cách giữa các button màu */
+            }
+            .color-button {
+                position: relative;
+                display: inline-block;
+                width: 30px; /* Đường kính của hình tròn màu */
+                height: 30px; /* Đường kính của hình tròn màu */
+                border: 1px solid white; /* Viền trắng */
+                border-radius: 50%; /* Bo tròn 50% */
+                cursor: pointer;
+            }
+            input[type="radio"]:checked + .color-button {
+                border: 3px solid black; /* Viền dày hơn khi được chọn */
+            }
+</style>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const addButtons = document.querySelectorAll('.add-btn');
+      addButtons.forEach(button => {
+        button.addEventListener('click', function(event) {
+          const isAuthenticated = '{{ user.is_authenticated }}'; // Kiểm tra trạng thái đăng nhập
+          if (isAuthenticated === 'False') {
+            alert('Bạn cần đăng nhập để thêm sản phẩm vào giỏ hàng.');
+            event.preventDefault(); // Ngăn chặn hành động thêm vào giỏ hàng
+          } else {
+          }
+        });
+      });
+    });
+</script>
+{% endblock search %}

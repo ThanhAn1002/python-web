@@ -1,8 +1,11 @@
-{% extends 'app/index.html' %}
+{% extends 'app/base.html' %}
 {% load static %}
+{% load humanize %}
+
 {% block content_checkout %}
-     <div class="row" style= 'width:100%; margin-top: 60px;'>
-		<div class="col-lg-6">
+<div style="background-image: url('https://cdn2.cellphones.com.vn/x/media/wysiwyg/BGNoel-1920x1080.jpg'); background-repeat: no-repeat; background-size: cover; background-attachment: fixed;">
+     <div class="row" style= "width:100%; margin-top: 60px; margin-left:0px">
+		<div class="col-lg-6" style="margin-top:30px" >
 			<div class="box-element" id="form-wrapper">
 				<form id="form" method="POST" action="{% url 'placeorder' %}">
 					{% csrf_token %}
@@ -39,10 +42,10 @@
 
 					<hr>
 					<input id="form-button" class="btn btn-success btn-block" 
-					style="background-color: #F8CD26; color: black; border: none; border-radius: 5px; margin:5px; padding: 10px 20px;" 
+					style="background-color: #000; color: white; border: none; border-radius: 5px; margin:5px; padding: 10px 20px;" 
 					type="submit" value="Đặt hàng" 
-					onmouseover="this.style.backgroundColor='#FFEE99';" 
-					onmouseout="this.style.backgroundColor='#F8CD26';">
+					onmouseover="this.style.backgroundColor='#6C757D';" 
+					onmouseout="this.style.backgroundColor='#000';">
 				</form>
 			</div>
 
@@ -52,24 +55,23 @@
 			</div>
 			
 		</div>
-
-		<div class="col-lg-6">
+		<div class="col-lg-6" style="margin-top:30px; margin-bottom:30px">
 			<div class="box-element">
-				<a style="margin-left:10px; margin-top:10px; border-radius:50px" class="btn btn-outline-dark" href="{% url 'cart' %}">&#x2190; Quay lại giỏ hàng</a>
+				<a class="btn btn-outline-dark" style="margin-left:10px; margin-top:10px; border-radius:50px" href="{% url 'cart' %}">&#x2190; Quay lại giỏ hàng</a>
 				<hr>
 				<h3 style="margin-left:10px; text-align:center;">Tóm tắt đơn hàng</h3>
 				<hr>
 				{% for item in items  %}
 			<div class="cart-row">
-				<div style="flex:2"><img class="row-image" src="{{item.product.ImageURL}}"></div>
-				<div style="flex:2"><p>{{item.product.name}}</p></div>
-				<div style="flex:1"><p class="quantity">x {{item.quantity}}</p></div>
-				<div style="flex:1"><p> {{item.product.price | floatformat:0}} ₫</p></div>
+				<div style="flex:2"> <img class="row-image" src="{{item.product.ImageURL}}"> </div>
+				<div style="flex:2"> <p>{{item.product.name}}</p> </div>
+				<div style="flex:1"> <p class="quantity">x {{item.quantity}}</p> </div>
+				<div style="flex:1"> <p>{{item.product.price | floatformat:0|intcomma}} ₫</p> </div>
 			</div>
 			{% endfor %}
-				<h5 style="margin:0 25px 20px" class="d-flex justify-content-between total font-weight-bold mt-4"><strong>Tổng thanh toán: ({{order.get_cart_items}} sản phẩm)</strong><strong>{{order.get_cart_total | floatformat:0}} ₫</strong></h5>
+				<h5 class="d-flex justify-content-between total font-weight-bold mt-4" style="margin:0 40px 20px"><strong>Tổng thanh toán: ({{order.get_cart_items}} sản phẩm)</strong><strong>{{order.get_cart_total | floatformat:0|intcomma}} ₫</strong></h5>
 			</div>
 		</div>
 	</div>
-	<br/><br/><br/>
+</div>
 {% endblock content_checkout %}
