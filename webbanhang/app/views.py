@@ -121,7 +121,7 @@ def ForgetPassword(request):
                 [email],
                 fail_silently=True
             )
-            messages.info(request,'Mã xác minh đã gửi về email của bạn !')
+            messages.success(request,'Mã xác minh đã gửi về email của bạn !')
             return redirect('forget_password')
         else:
             print("Người dùng không tồn tại")
