@@ -80,7 +80,7 @@
                     <a class="nav-link" href="{% url "tracuudonhang" %}">Tra cứu đơn hàng</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="{% url "aboutus" %}">Liên hệ</a>
+                    <a class="nav-link" href="{% url "aboutus" %}">Giới thiệu</a>
                   </li>
                 </ul>
                 <form class="d-flex" role="search" method = POST action=  "{% url 'search' %}">
@@ -223,8 +223,85 @@
   </div>
   <!-- Copyright -->
 </footer>
+
+<!-- scrollToTop -->
+ <button class="button" onclick="scrollToTop()">
+  <svg viewBox="0 0 384 512" class="svgIcon">
+      <path
+          d="M214.6 41.4c-12.5-12.5-32.8-12.5-45.3 0l-160 160c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 141.2V448c0 17.7 14.3 32 32 32s32-14.3 32-32V141.2L329.4 246.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-160-160z"
+      ></path>
+  </svg>
+ </button>
+ <style> 
+  body {
+      margin: 0;
+      background-color: #f0f0f0;
+      position: relative;
+  }
+
+  .button {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background-color: rgb(20, 20, 20);
+      border: none;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0px 0px 0px 4px rgba(180, 160, 255, 0.253);
+      cursor: pointer;
+      transition-duration: 0.3s;
+      overflow: hidden;
+      position: fixed; /* Đặt vị trí cố định */
+      bottom: 20px;
+      right: 20px;
+      z-index: 1000; /* Đảm bảo nút nằm trên các phần tử khác */
+  }
+
+  .svgIcon {
+      width: 12px;
+      transition-duration: 0.3s;
+  }
+
+  .svgIcon path {
+      fill: white;
+  }
+
+  .button:hover {
+      width: 140px;
+      border-radius: 50px;
+      background-color: rgb(20, 20, 20);
+  }
+
+  .button:hover .svgIcon {
+      transition-duration: 0.3s;
+      transform: translateY(-200%);
+  }
+
+  .button::before {
+      position: absolute;
+      bottom: -20px;
+      content: "Back to Top";
+      color: white;
+      font-size: 0px;
+      transition-duration: 0.3s;
+  }
+
+  .button:hover::before {
+      font-size: 13px;
+      opacity: 1;
+      bottom: unset;
+      transition-duration: 0.3s;
+  }
+ </style>
+<!-- end scrollToTop -->
 <script src="{%static 'app/js/cart.js' %}" > </script>
 <script>
+  function scrollToTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
   document.addEventListener('DOMContentLoaded', function () {
       {% if messages %}
           {% for message in messages %}
@@ -233,6 +310,7 @@
                   text: "{{ message }}",
                   icon: "{{ message.tags }}",
                   button: "OK",
+                  timer: 3000
               });
           {% endfor %}
       {% endif %}

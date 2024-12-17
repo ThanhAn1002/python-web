@@ -33,7 +33,7 @@ def send_verification_email():
 # Thông tin email
 email_user = 'thanhan2004thd@gmail.com'
 email_password = 'nfyjpggtvkywckqk'
-email_send = 'hoangthanhan10022004@gmail.com'
+email_send = 'ngocson2811dn@gmail.com'
 
 # Khởi tạo mã và thời gian gửi
 verification_code = ""
